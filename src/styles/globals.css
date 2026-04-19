@@ -1,0 +1,348 @@
+@import "tailwindcss";
+
+/* ============================================================
+   AL-MINBAR DESIGN SYSTEM
+   Concept: "Sacred Geometry meets Modern Minimalism"
+   
+   Color Theory:
+   - Deep Midnight Blue (Lapis Lazuli) = Depth, spirituality, trust
+   - Warm Gold (24k) = Divine light, wisdom, premium quality
+   - Parchment = Ancient knowledge, warmth, readability
+   - Emerald Green = Growth, paradise (Jannah), nature
+   - Crimson = Urgency, importance (prayer alerts)
+   
+   Typography:
+   - Amiri: Classical Arabic calligraphy feel
+   - Noto Nastaliq Urdu: Authentic Urdu script
+   - Playfair Display: Elegant serif for headings
+   - Inter: Clean, modern body text
+   ============================================================ */
+
+@theme {
+  /* === LAPIS LAZULI PALETTE === */
+  --color-lapis-950: #060D1A;
+  --color-lapis-900: #0A1628;
+  --color-lapis-800: #0F2040;
+  --color-lapis-700: #162B55;
+  --color-lapis-600: #1E3A6E;
+  --color-lapis-500: #274D8A;
+  --color-lapis-400: #3A6BAD;
+
+  /* === GOLD PALETTE === */
+  --color-gold-300: #F5D98A;
+  --color-gold-400: #E8C46A;
+  --color-gold-500: #C9A84C;
+  --color-gold-600: #A8893A;
+  --color-gold-700: #876D2C;
+  --color-gold-800: #5C4A1E;
+
+  /* === PARCHMENT PALETTE === */
+  --color-parchment-50: #FDFBF4;
+  --color-parchment-100: #F8F4E8;
+  --color-parchment-200: #EDE6D0;
+  --color-parchment-300: #D9CEB5;
+
+  /* === EMERALD (JANNAH) PALETTE === */
+  --color-emerald-400: #34D399;
+  --color-emerald-500: #10B981;
+  --color-emerald-600: #059669;
+
+  /* === SEMANTIC COLORS === */
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+  --color-info: #3B82F6;
+
+  /* === TYPOGRAPHY === */
+  --font-arabic: 'Amiri', 'Scheherazade New', serif;
+  --font-urdu: 'Noto Nastaliq Urdu', serif;
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* === ANIMATIONS === */
+  --animate-spin-slow: spin 8s linear infinite;
+  --animate-fade-in: fadeIn 0.4s ease-out;
+  --animate-slide-up: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-slide-down: slideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-scale-in: scaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-shimmer: shimmer 2s linear infinite;
+  --animate-pulse-gold: pulseGold 2s ease-in-out infinite;
+  --animate-float: float 6s ease-in-out infinite;
+}
+
+/* ============================================================
+   KEYFRAMES
+   ============================================================ */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes pulseGold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201, 168, 76, 0); }
+  50% { box-shadow: 0 0 0 8px rgba(201, 168, 76, 0.15); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes dash {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: 1000; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0.3; }
+  25% { transform: translateY(-20px) translateX(10px); opacity: 0.6; }
+  50% { transform: translateY(-10px) translateX(-5px); opacity: 0.4; }
+  75% { transform: translateY(-30px) translateX(5px); opacity: 0.5; }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================================
+   BASE STYLES
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--color-lapis-900);
+  color: var(--color-parchment-100);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+}
+
+/* ============================================================
+   SCROLLBAR STYLING
+   ============================================================ */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(201, 168, 76, 0.4) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(201, 168, 76, 0.3);
+  border-radius: 3px;
+  transition: background 0.2s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(201, 168, 76, 0.6);
+}
+
+/* ============================================================
+   TYPOGRAPHY UTILITIES
+   ============================================================ */
+.font-arabic {
+  font-family: var(--font-arabic);
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+.font-urdu {
+  font-family: var(--font-urdu);
+  line-height: 2.2;
+}
+
+.font-heading {
+  font-family: var(--font-heading);
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* ============================================================
+   RTL SUPPORT
+   ============================================================ */
+.dir-rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+[dir="rtl"] {
+  direction: rtl;
+}
+
+/* ============================================================
+   SELECTION
+   ============================================================ */
+::selection {
+  background-color: rgba(201, 168, 76, 0.3);
+  color: var(--color-parchment-50);
+}
+
+/* ============================================================
+   FOCUS STYLES (ACCESSIBILITY)
+   ============================================================ */
+:focus-visible {
+  outline: 2px solid var(--color-gold-500);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ============================================================
+   GLASSMORPHISM UTILITIES
+   ============================================================ */
+.glass {
+  background: rgba(15, 32, 64, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(201, 168, 76, 0.12);
+}
+
+.glass-light {
+  background: rgba(22, 43, 85, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(201, 168, 76, 0.1);
+}
+
+.glass-gold {
+  background: rgba(201, 168, 76, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+}
+
+/* ============================================================
+   GRADIENT UTILITIES
+   ============================================================ */
+.gradient-gold {
+  background: linear-gradient(135deg, var(--color-gold-400), var(--color-gold-600));
+}
+
+.gradient-lapis {
+  background: linear-gradient(135deg, var(--color-lapis-700), var(--color-lapis-900));
+}
+
+.gradient-sacred {
+  background: linear-gradient(135deg, #0A1628 0%, #162B55 50%, #0A1628 100%);
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, var(--color-gold-300), var(--color-gold-500));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================================
+   GEOMETRIC PATTERN BACKGROUND
+   ============================================================ */
+.bg-geometric {
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A84C' fill-opacity='0.04'%3E%3Cpath d='M40 0L50 20H70L55 32L62 52L40 40L18 52L25 32L10 20H30L40 0Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.bg-arabesque {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A84C' fill-opacity='0.03'%3E%3Cpath d='M30 0L36 12H48L38 19L42 31L30 24L18 31L22 19L12 12H24L30 0Z'/%3E%3Cpath d='M0 30L6 42H18L8 49L12 61L0 54L-12 61L-8 49L-18 42H-6L0 30Z' opacity='0.5'/%3E%3Cpath d='M60 30L66 42H78L68 49L72 61L60 54L48 61L52 49L42 42H54L60 30Z' opacity='0.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* ============================================================
+   CARD STYLES
+   ============================================================ */
+.card {
+  background: rgba(15, 32, 64, 0.7);
+  border: 1px solid rgba(201, 168, 76, 0.12);
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  border-color: rgba(201, 168, 76, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(201, 168, 76, 0.1);
+}
+
+.card-gold {
+  background: linear-gradient(135deg, rgba(201, 168, 76, 0.15), rgba(201, 168, 76, 0.05));
+  border: 1px solid rgba(201, 168, 76, 0.25);
+  border-radius: 16px;
+}
+
+/* ============================================================
+   BUTTON STYLES
+   ============================================================ */
+.btn-gold {
+  background: linear-gradient(135deg, var(--color-gold-400), var(--color-gold-600));
+  color: var(--color-lapis-900);
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-gold:hover {
+  background: linear-gradient(135deg, var(--color-gold-300), var(--color-gold-500));
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(201, 168, 76, 0.3);
+}
+
+.btn-gold:active {
+  transform: translateY(0);
+}
+
+/* ============================================================
+   UTILITY CLASSES
+   ============================================================ */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

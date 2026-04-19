@@ -1,0 +1,13 @@
+{
+  "name": "Al-Minbar - Islamic Super App",
+  "short_name": "Al-Minbar",
+  "description": "Your companion for Islamic knowledge, prayer times, and community",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0F1B33",
+  "theme_color": "#1D2D50",
+  "orientation": "portrait-primary",
+  "categories": ["lifestyle", "education", "reference"],
+  "lang": "en",
+  "dir": "ltr"
+}
